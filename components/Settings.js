@@ -20,10 +20,10 @@ const Settings = ({ setIsSettings }) => {
         const filtered = todos.filter(todo => todo.id !== todoId);
 
         setTodos(filtered);
-        localStorage.setItem("my-todo", JSON.stringify(filtered));
+        localStorage.setItem("my-todos", JSON.stringify(filtered));
 
         setIsSettings(prevState => !prevState);
-        router.push("/");
+        router.replace("/");
     };
 
     return (

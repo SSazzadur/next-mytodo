@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTodo, useTodoId } from "../../todo_modules/TodoContext";
 
+import { useMediaQuery } from "@material-ui/core";
 import TopBar from "../../components/TopBar";
 import TodoBody from "../../components/todo-body/TodoBody";
 
@@ -13,11 +15,31 @@ const TodoList = () => {
     const [todos, setTodos] = useTodo();
     const [tId, setTodoId] = useTodoId();
 
+    const mobile = useMediaQuery("(max-width:600px)");
+
     useEffect(() => {
         const filtered = todos.filter(todo => todo.id === todoId);
         if (todos.length > 0) setFoundTodos(filtered[0]);
         setTodoId(todoId);
     });
+
+    if (foundTodos && foundTodos.todos && foundTodos.todos.length === 0) {
+        return (
+            <div>
+                <TopBar heading={foundTodos.todoCat} />
+                <div
+                    style={{
+                        margin: "0 auto",
+                        display: "grid",
+                        placeContent: "center",
+                        width: mobile ? "80%" : "30rem",
+                        height: "80vh",
+                    }}>
+                    <Image src="/images/empty-list.svg" width="750px" height="750px"></Image>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>
