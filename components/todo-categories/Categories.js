@@ -21,7 +21,11 @@ const Categories = () => {
                     width: mobile ? "80%" : "30rem",
                     height: "80vh",
                 }}>
-                <Image src="/images/empty-list.svg" width="750px" height="750px"></Image>
+                <Image
+                    src="/images/empty-list.svg"
+                    alt="empty-screen"
+                    width="750px"
+                    height="750px"></Image>
             </div>
         );
     }
