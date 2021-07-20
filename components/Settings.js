@@ -30,7 +30,11 @@ const Settings = ({ setIsSettings }) => {
         <div
             style={{
                 position: "fixed",
-                inset: "0",
+                // inset: "0",
+                top: "0",
+                bottom: "0",
+                left: "0",
+                right: "0",
                 background: "rgba(0, 103, 224, 0.3)",
                 backdropFilter: "blur(2px)",
                 paddingTop: "3rem",

@@ -24,8 +24,10 @@ const Category = ({ todo }) => {
 
                 <Link href="todos/[todoId]" as={`todos/${todo.id}`}>
                     <Button
+                        variant="contained"
                         style={{
-                            color: "white",
+                            color: "#0067E0",
+                            background: "white",
                             textTransform: "initial",
                             fontFamily: '"Lobster Two", cursive',
                         }}>

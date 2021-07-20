@@ -101,7 +101,11 @@ const AddCategory = ({ setIsAddTodo }) => {
         <div
             style={{
                 position: "fixed",
-                inset: "0",
+                // inset: "0",
+                top: "0",
+                bottom: "0",
+                left: "0",
+                right: "0",
                 background: "rgba(0, 103, 224, 0.3)",
                 backdropFilter: "blur(2px)",
                 paddingTop: "3rem",
@@ -123,6 +127,7 @@ const AddCategory = ({ setIsAddTodo }) => {
                         value={todoBody}
                         onChange={e => setTodoBody(e.target.value)}
                         id="add-todos-cat"
+                        autoComplete="off"
                         style={{
                             width: "90%",
                             margin: "0 5%",
@@ -138,7 +143,6 @@ const AddCategory = ({ setIsAddTodo }) => {
                             display: "flex",
                             justifyContent: "flex-end",
                             alignItems: "center",
-                            gap: "1rem",
                             paddingTop: "1rem",
                         }}>
                         <Button
@@ -149,6 +153,7 @@ const AddCategory = ({ setIsAddTodo }) => {
                                 color: "#0067E0",
                                 textTransform: "initial",
                                 fontFamily: '"Lobster Two", cursive',
+                                marginRight: "1rem",
                             }}>
                             Add
                         </Button>
