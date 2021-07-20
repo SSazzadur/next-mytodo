@@ -69,7 +69,7 @@ const AddCategory = ({ setIsAddCat }) => {
 
         localStorage.setItem(
             "my-todos",
-            JSON.stringify([{ dateTime, id: uuidv4(), todoCat, todos: {} }, ...todo])
+            JSON.stringify([{ dateTime, id: uuidv4(), todoCat, todos: [] }, ...todo])
         );
         setTodoCat("");
         setIsAddCat(prevState => !prevState);
