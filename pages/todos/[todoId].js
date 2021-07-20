@@ -24,33 +24,9 @@ const TodoList = () => {
         setTodoId(todoId);
     });
 
-    if (foundTodos && foundTodos.todos && foundTodos.todos.length === 0) {
-        return (
-            <>
-                <Meta title={`${foundTodos.todoCat} | My Todo`} />
-                <div>
-                    <TopBar heading={foundTodos.todoCat} />
-                    <div
-                        style={{
-                            margin: "0 auto",
-                            display: "grid",
-                            placeContent: "center",
-                            width: mobile ? "80%" : "30rem",
-                            height: "80vh",
-                        }}>
-                        <Image
-                            src="/images/empty-list.svg"
-                            alt="empty-screen"
-                            width="750px"
-                            height="750px"></Image>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
     return (
         <>
+            <Meta title={`${foundTodos.todoCat} | My Todo`} />
             {foundTodos && (
                 <div>
                     <TopBar heading={foundTodos.todoCat} />
@@ -64,6 +40,23 @@ const TodoList = () => {
                                     key={todo.id}
                                 />
                             ))}
+
+                        {foundTodos.todos && foundTodos.todos.length === 0 && (
+                            <div
+                                style={{
+                                    margin: "0 auto",
+                                    display: "grid",
+                                    placeContent: "center",
+                                    width: mobile ? "80%" : "30rem",
+                                    height: "80vh",
+                                }}>
+                                <Image
+                                    src="/images/empty-list.svg"
+                                    alt="empty-screen"
+                                    width="750px"
+                                    height="750px"></Image>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

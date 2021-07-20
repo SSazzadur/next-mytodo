@@ -83,7 +83,7 @@ const TodoBody = ({ todo, id }) => {
                 background: "#0067E0",
                 borderRadius: "10px",
                 color: "white",
-                padding: "1rem 0.5rem",
+                padding: "1rem 0.5rem 0.5rem",
             }}>
             <h2 style={{ textAlign: "center" }}>{todo.body}</h2>
             <hr style={{ margin: "1rem 0 0.4rem" }} />
