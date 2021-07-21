@@ -9,6 +9,9 @@ import { useTodo, useTodoBody, useAddTodo, useEditTodo } from "../../modules/Tod
 import useStyles from "../../modules/useStyles";
 import useDateTime from "../../modules/useDateTime";
 
+import { motion } from "framer-motion";
+import { cardAnimation } from "../../animations/Animations";
+
 const TodoBody = ({ todo, id }) => {
     const [todos, setTodos] = useTodo();
     const [todoBody, setTodoBody] = useTodoBody();
@@ -43,7 +46,9 @@ const TodoBody = ({ todo, id }) => {
     const { cardStyle, belowLineStyle, dateTimeStyle, iconButtonStyle } = useStyles();
 
     return (
-        <div style={{ ...cardStyle, padding: "1rem 0.5rem 0.5rem" }}>
+        <motion.div
+            variants={cardAnimation}
+            style={{ ...cardStyle, padding: "1rem 0.5rem 0.5rem" }}>
             <h2 style={{ textAlign: "center" }}>{todo.body}</h2>
             <hr style={{ margin: "1rem 0 0.4rem" }} />
             <div style={belowLineStyle}>
@@ -62,7 +67,7 @@ const TodoBody = ({ todo, id }) => {
                     </IconButton>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -6,6 +6,9 @@ import { useTodo } from "../../modules/TodoContext";
 
 import { useMediaQuery } from "@material-ui/core";
 
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../animations/Animations";
+
 const Categories = () => {
     const [todos, setTodos] = useTodo();
 
@@ -31,11 +34,16 @@ const Categories = () => {
     }
 
     return (
-        <div style={{ margin: "2rem 0" }}>
+        <motion.div
+            variants={pageAnimation}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            style={{ margin: "2rem 0" }}>
             {todos.map(todo => (
                 <Category key={todo.id} todo={todo} />
             ))}
-        </div>
+        </motion.div>
     );
 };
 

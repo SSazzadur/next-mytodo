@@ -7,6 +7,9 @@ import CloseIcon from "@material-ui/icons/Close";
 
 import useStyles from "../modules/useStyles";
 
+import { motion } from "framer-motion";
+import { pageAnimation, cardAnimation } from "../animations/Animations";
+
 const Settings = ({ setIsSettings }) => {
     const mobile = useMediaQuery("(max-width:600px)");
     const router = useRouter();
@@ -15,7 +18,7 @@ const Settings = ({ setIsSettings }) => {
 
     const backHandler = () => {
         setIsSettings(prevState => !prevState);
-        router.push("/");
+        router.replace("/");
     };
 
     const deleteHandler = () => {
@@ -32,8 +35,13 @@ const Settings = ({ setIsSettings }) => {
         useStyles();
 
     return (
-        <div style={modalShadowStyle}>
-            <div style={settingsModalStyle}>
+        <motion.div
+            variants={pageAnimation}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            style={modalShadowStyle}>
+            <motion.div variants={cardAnimation} style={settingsModalStyle}>
                 <div
                     style={{
                         width: "100%",
@@ -55,8 +63,8 @@ const Settings = ({ setIsSettings }) => {
                         Delete Category
                     </Button>
                 </ButtonGroup>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
 

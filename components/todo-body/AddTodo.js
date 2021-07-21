@@ -7,6 +7,9 @@ import { TextField, Button } from "@material-ui/core";
 import useStyles from "../../modules/useStyles";
 import useDateTime from "../../modules/useDateTime";
 
+import { motion } from "framer-motion";
+import { pageAnimation, cardAnimation } from "../../animations/Animations";
+
 const AddCategory = ({ setIsAddTodo }) => {
     const [todoBody, setTodoBody] = useTodoBody();
     const [todos, setTodos] = useTodo();
@@ -69,8 +72,13 @@ const AddCategory = ({ setIsAddTodo }) => {
     } = useStyles();
 
     return (
-        <div style={modalShadowStyle}>
-            <div style={modalStyle}>
+        <motion.div
+            variants={pageAnimation}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            style={modalShadowStyle}>
+            <motion.div variants={cardAnimation} style={modalStyle}>
                 <h1 style={modalHeadingStyle}>Add A Todo</h1>
                 <hr style={{ margin: "1rem 0" }} />
                 <form onSubmit={addTodo}>
@@ -93,8 +101,8 @@ const AddCategory = ({ setIsAddTodo }) => {
                         </Button>
                     </div>
                 </form>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
 

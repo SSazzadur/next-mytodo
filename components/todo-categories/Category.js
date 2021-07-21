@@ -5,11 +5,14 @@ import { useMediaQuery, Button } from "@material-ui/core";
 
 import useStyles from "../../modules/useStyles";
 
+import { motion } from "framer-motion";
+import { cardAnimation } from "../../animations/Animations";
+
 const Category = ({ todo }) => {
     const { cardStyle, cardHeadingStyle, belowLineStyle, dateTimeStyle, buttonStyle } = useStyles();
 
     return (
-        <div style={cardStyle}>
+        <motion.div variants={cardAnimation} style={cardStyle}>
             <h2 style={cardHeadingStyle}>{todo.todoCat}</h2>
             <hr style={{ margin: "1rem 0" }} />
             <div style={belowLineStyle}>
@@ -23,7 +26,7 @@ const Category = ({ todo }) => {
                     </Button>
                 </Link>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

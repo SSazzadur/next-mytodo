@@ -8,6 +8,9 @@ import TopBar from "../../components/TopBar";
 import TodoBody from "../../components/todo-body/TodoBody";
 import Meta from "../../components/layout/Meta";
 
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../animations/Animations";
+
 const TodoList = () => {
     const router = useRouter();
     const { todoId } = router.query;
@@ -31,15 +34,21 @@ const TodoList = () => {
                 <div>
                     <TopBar heading={foundTodos.todoCat} />
                     <div style={{ margin: "2rem 0" }}>
-                        {foundTodos.todos &&
-                            foundTodos.todos.map(todo => (
-                                <TodoBody
-                                    todo={todo}
-                                    id={foundTodos.id}
-                                    dateTime={foundTodos.dateTime}
-                                    key={todo.id}
-                                />
-                            ))}
+                        <motion.div
+                            variants={pageAnimation}
+                            initial="hidden"
+                            animate="show"
+                            exit="exit">
+                            {foundTodos.todos &&
+                                foundTodos.todos.map(todo => (
+                                    <TodoBody
+                                        todo={todo}
+                                        id={foundTodos.id}
+                                        dateTime={foundTodos.dateTime}
+                                        key={todo.id}
+                                    />
+                                ))}
+                        </motion.div>
 
                         {foundTodos.todos && foundTodos.todos.length === 0 && (
                             <div
