@@ -33,6 +33,7 @@ export default function useStyles() {
         borderRadius: "10px",
         color: "white",
         padding: "1rem 0.5rem",
+        boxShadow: "0 0 15px rgba(0,0,0,0.25)",
     };
 
     const cardHeadingStyle = {

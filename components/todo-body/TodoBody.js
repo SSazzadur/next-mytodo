@@ -1,16 +1,15 @@
 import React from "react";
 
-import { useMediaQuery, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import { useTodo, useTodoBody, useAddTodo, useEditTodo } from "../../todo_modules/TodoContext";
 
 import useStyles from "../useStyles";
+import useDateTime from "../useDateTime";
 
 const TodoBody = ({ todo, id }) => {
-    const mobile = useMediaQuery("(max-width:600px)");
-
     const [todos, setTodos] = useTodo();
     const [todoBody, setTodoBody] = useTodoBody();
     const [isAddTodo, setIsAddTodo] = useAddTodo();
@@ -22,6 +21,7 @@ const TodoBody = ({ todo, id }) => {
         setEditTodoId(todo.id);
     };
 
+    const dateTime = useDateTime();
     const deleteHandler = () => {
         let matched = todos.filter(todo => todo.id === id)[0];
         const filtered = todos.filter(todo => todo.id !== id);
@@ -31,50 +31,13 @@ const TodoBody = ({ todo, id }) => {
 
         matched = {
             ...matched,
-            dateTime: getDateTime(),
+            dateTime: dateTime,
             todos: filteredTodo,
         };
 
         setTodos([matched, ...filtered]);
 
         localStorage.setItem("my-todos", JSON.stringify([matched, ...filtered]));
-    };
-    const getDateTime = () => {
-        const d = new Date();
-        const date =
-            d.getDate() % 10 === 1
-                ? `${d.getDate()}st`
-                : d.getDate() % 10 === 2
-                ? `${d.getDate()}nd`
-                : d.getDate() % 10 === 3
-                ? `${d.getDate()}rd`
-                : `${d.getDate()}th`;
-
-        const months = [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-        ];
-        const month = [months[d.getMonth() - 1]];
-
-        const min = d.getMinutes() < 10 ? `0${d.getMinutes(0)}` : d.getMinutes();
-        const h = d.getHours() === 0 ? 12 : d.getHours() > 12 ? d.getHours() - 12 : d.getHours();
-        const hour = h < 10 ? `0${h}` : h;
-        const postFix = d.getHours() === 0 ? " am" : d.getHours() >= 12 ? " pm" : " am";
-        const time = hour + " : " + min + postFix;
-
-        const dateTime = date + " " + month + " | " + time;
-
-        return dateTime;
     };
 
     const { cardStyle, belowLineStyle, dateTimeStyle, iconButtonStyle } = useStyles();

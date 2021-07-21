@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useTodo, useTodoBody, useTodoId, useEditTodo } from "../../todo_modules/TodoContext";
 
-import { TextField, Button, useMediaQuery } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 
 import useStyles from "../useStyles";
+import useDateTime from "../useDateTime";
 
 const AddCategory = ({ setIsAddTodo }) => {
-    const mobile = useMediaQuery("(max-width:600px)");
-
     const [todoBody, setTodoBody] = useTodoBody();
     const [todos, setTodos] = useTodo();
     const [todoId, setTodoId] = useTodoId();
@@ -18,50 +17,11 @@ const AddCategory = ({ setIsAddTodo }) => {
         document.getElementById("add-todos-cat").focus();
     });
 
-    const getDateTime = () => {
-        const d = new Date();
-        const date =
-            d.getDate() % 10 === 1
-                ? `${d.getDate()}st`
-                : d.getDate() % 10 === 2
-                ? `${d.getDate()}nd`
-                : d.getDate() % 10 === 3
-                ? `${d.getDate()}rd`
-                : `${d.getDate()}th`;
-
-        const months = [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-        ];
-        const month = [months[d.getMonth() - 1]];
-
-        const min = d.getMinutes() < 10 ? `0${d.getMinutes(0)}` : d.getMinutes();
-        const h = d.getHours() === 0 ? 12 : d.getHours() > 12 ? d.getHours() - 12 : d.getHours();
-        const hour = h < 10 ? `0${h}` : h;
-        const postFix = d.getHours() === 0 ? " am" : d.getHours() >= 12 ? " pm" : " am";
-        const time = hour + " : " + min + postFix;
-
-        const dateTime = date + " " + month + " | " + time;
-
-        return dateTime;
-    };
-
+    const dateTime = useDateTime();
     const addTodo = e => {
         e.preventDefault();
 
         if (todoBody === "") return;
-
-        const dateTime = getDateTime();
 
         let matched = [];
         matched = todos.filter(todo => todo.id === todoId)[0];
