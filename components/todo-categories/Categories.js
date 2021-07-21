@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Category from "./Category";
 
-import { useTodo } from "../../todo_modules/TodoContext";
+import { useTodo } from "../../modules/TodoContext";
 
 import { useMediaQuery } from "@material-ui/core";
 

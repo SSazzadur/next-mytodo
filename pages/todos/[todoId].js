@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useTodo, useTodoId } from "../../todo_modules/TodoContext";
+import { useTodo, useTodoId } from "../../modules/TodoContext";
 
 import { useMediaQuery } from "@material-ui/core";
 import TopBar from "../../components/TopBar";

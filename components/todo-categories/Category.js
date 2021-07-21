@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { useMediaQuery, Button } from "@material-ui/core";
 
-import useStyles from "../useStyles";
+import useStyles from "../../modules/useStyles";
 
 const Category = ({ todo }) => {
     const { cardStyle, cardHeadingStyle, belowLineStyle, dateTimeStyle, buttonStyle } = useStyles();

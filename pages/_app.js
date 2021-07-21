@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { TodoProvider } from "../todo_modules/TodoContext";
+import { TodoProvider } from "../modules/TodoContext";
 
 import Layout from "../components/layout/Layout";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useAddTodo } from "../todo_modules/TodoContext";
+import { useAddTodo } from "../modules/TodoContext";
 
 import AddCategory from "./todo-categories/AddCategory";
 import AddTodo from "./todo-body/AddTodo";
@@ -10,7 +10,7 @@ import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import TuneIcon from "@material-ui/icons/Tune";
 
-import useStyles from "./useStyles";
+import useStyles from "../modules/useStyles";
 
 const TopBar = ({ heading }) => {
     const [isAddCat, setIsAddCat] = useState(false);

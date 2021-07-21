@@ -1,11 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { useTodo, useTodoId } from "../todo_modules/TodoContext";
+import { useTodo, useTodoId } from "../modules/TodoContext";
 
 import { useMediaQuery, Button, ButtonGroup, IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 
-import useStyles from "./useStyles";
+import useStyles from "../modules/useStyles";
 
 const Settings = ({ setIsSettings }) => {
     const mobile = useMediaQuery("(max-width:600px)");

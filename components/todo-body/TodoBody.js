@@ -4,10 +4,10 @@ import { IconButton } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import { useTodo, useTodoBody, useAddTodo, useEditTodo } from "../../todo_modules/TodoContext";
+import { useTodo, useTodoBody, useAddTodo, useEditTodo } from "../../modules/TodoContext";
 
-import useStyles from "../useStyles";
-import useDateTime from "../useDateTime";
+import useStyles from "../../modules/useStyles";
+import useDateTime from "../../modules/useDateTime";
 
 const TodoBody = ({ todo, id }) => {
     const [todos, setTodos] = useTodo();

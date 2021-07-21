@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useTodo, useTodoBody, useTodoId, useEditTodo } from "../../todo_modules/TodoContext";
+import { useTodo, useTodoBody, useTodoId, useEditTodo } from "../../modules/TodoContext";
 
 import { TextField, Button } from "@material-ui/core";
 
-import useStyles from "../useStyles";
-import useDateTime from "../useDateTime";
+import useStyles from "../../modules/useStyles";
+import useDateTime from "../../modules/useDateTime";
 
 const AddCategory = ({ setIsAddTodo }) => {
     const [todoBody, setTodoBody] = useTodoBody();
