@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useTodo } from "../../todo_modules/TodoContext";
 
 import { TextField, Button, useMediaQuery } from "@material-ui/core";
+import useStyles from "../useStyles";
 
 const AddCategory = ({ setIsAddCat }) => {
     const mobile = useMediaQuery("(max-width:600px)");
@@ -75,30 +76,19 @@ const AddCategory = ({ setIsAddCat }) => {
         setIsAddCat(prevState => !prevState);
     };
 
+    const {
+        modalShadowStyle,
+        modalStyle,
+        modalHeadingStyle,
+        modalTextFieldStyle,
+        modalButtonContainerStyle,
+        buttonStyle,
+    } = useStyles();
+
     return (
-        <div
-            style={{
-                position: "fixed",
-                // inset: "0",
-                top: "0",
-                bottom: "0",
-                left: "0",
-                right: "0",
-                background: "rgba(0, 103, 224, 0.3)",
-                backdropFilter: "blur(2px)",
-                paddingTop: "3rem",
-                zIndex: "999",
-            }}>
-            <div
-                style={{
-                    width: mobile ? "90%" : "40rem",
-                    margin: "0 auto",
-                    background: "#0067E0",
-                    padding: "1rem",
-                    borderRadius: "10px",
-                    boxShadow: "0 0 25px rgba(0,0,0,0.25)",
-                }}>
-                <h1 style={{ textAlign: "center", color: "white" }}>Add A Todo Category</h1>
+        <div style={modalShadowStyle}>
+            <div style={modalStyle}>
+                <h1 style={modalHeadingStyle}>Add A Todo Category</h1>
                 <hr style={{ margin: "1rem 0" }} />
                 <form onSubmit={addTodo}>
                     <TextField
@@ -106,44 +96,19 @@ const AddCategory = ({ setIsAddCat }) => {
                         onChange={e => setTodoCat(e.target.value)}
                         id="add-todo-cat"
                         autoComplete="off"
-                        style={{
-                            width: "90%",
-                            margin: "0 5%",
-                            background: "white",
-                            borderRadius: "10px",
-                            padding: "1rem 0.5rem",
-                        }}
+                        style={modalTextFieldStyle}
                     />
-                    <div
-                        style={{
-                            width: "90%",
-                            margin: "0 auto",
-                            display: "flex",
-                            justifyContent: "flex-end",
-                            alignItems: "center",
-                            paddingTop: "1rem",
-                        }}>
+                    <div style={modalButtonContainerStyle}>
                         <Button
                             onClick={addTodo}
                             variant="contained"
-                            style={{
-                                background: "white",
-                                color: "#0067E0",
-                                textTransform: "initial",
-                                fontFamily: '"Lobster Two", cursive',
-                                marginRight: "1rem",
-                            }}>
+                            style={{ ...buttonStyle, marginRight: "1rem" }}>
                             Add
                         </Button>
                         <Button
                             onClick={() => setIsAddCat(prevState => !prevState)}
                             variant="contained"
-                            style={{
-                                background: "white",
-                                color: "#0067E0",
-                                textTransform: "initial",
-                                fontFamily: '"Lobster Two", cursive',
-                            }}>
+                            style={buttonStyle}>
                             Cancel
                         </Button>
                     </div>

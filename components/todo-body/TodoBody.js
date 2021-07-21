@@ -6,6 +6,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 import { useTodo, useTodoBody, useAddTodo, useEditTodo } from "../../todo_modules/TodoContext";
 
+import useStyles from "../useStyles";
+
 const TodoBody = ({ todo, id }) => {
     const mobile = useMediaQuery("(max-width:600px)");
 
@@ -75,44 +77,24 @@ const TodoBody = ({ todo, id }) => {
         return dateTime;
     };
 
+    const { cardStyle, belowLineStyle, dateTimeStyle, iconButtonStyle } = useStyles();
+
     return (
-        <div
-            style={{
-                width: mobile ? "90%" : "40rem",
-                margin: "1rem auto",
-                background: "#0067E0",
-                borderRadius: "10px",
-                color: "white",
-                padding: "1rem 0.5rem 0.5rem",
-            }}>
+        <div style={{ ...cardStyle, padding: "1rem 0.5rem 0.5rem" }}>
             <h2 style={{ textAlign: "center" }}>{todo.body}</h2>
             <hr style={{ margin: "1rem 0 0.4rem" }} />
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <p style={{ display: "flex", flexDirection: "column", fontSize: "0.6rem" }}>
+            <div style={belowLineStyle}>
+                <p style={{ ...dateTimeStyle, fontSize: "0.6rem" }}>
                     Added <span style={{ fontSize: "0.8rem" }}>{todo.dateTime}</span>
                 </p>
                 <div style={{ justifySelf: "flex-end" }}>
                     <IconButton
                         onClick={editHandler}
                         variant="contained"
-                        style={{
-                            background: "white",
-                            color: "#0067E0",
-                            textTransform: "initial",
-                            fontFamily: '"Lobster Two", cursive',
-                            marginRight: "0.3rem",
-                        }}>
+                        style={{ ...iconButtonStyle, marginRight: "0.3rem" }}>
                         <EditIcon style={{ fontSize: "0.8rem" }} />
                     </IconButton>
-                    <IconButton
-                        onClick={deleteHandler}
-                        variant="contained"
-                        style={{
-                            background: "white",
-                            color: "#0067E0",
-                            textTransform: "initial",
-                            fontFamily: '"Lobster Two", cursive',
-                        }}>
+                    <IconButton onClick={deleteHandler} variant="contained" style={iconButtonStyle}>
                         <DeleteIcon style={{ fontSize: "0.8rem" }} />
                     </IconButton>
                 </div>

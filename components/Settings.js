@@ -5,6 +5,8 @@ import { useTodo, useTodoId } from "../todo_modules/TodoContext";
 import { useMediaQuery, Button, ButtonGroup, IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 
+import useStyles from "./useStyles";
+
 const Settings = ({ setIsSettings }) => {
     const mobile = useMediaQuery("(max-width:600px)");
     const router = useRouter();
@@ -26,30 +28,12 @@ const Settings = ({ setIsSettings }) => {
         router.replace("/");
     };
 
+    const { modalShadowStyle, settingsModalStyle, settingsModalCloseStyle, buttonStyle } =
+        useStyles();
+
     return (
-        <div
-            style={{
-                position: "fixed",
-                // inset: "0",
-                top: "0",
-                bottom: "0",
-                left: "0",
-                right: "0",
-                background: "rgba(0, 103, 224, 0.3)",
-                backdropFilter: "blur(2px)",
-                paddingTop: "3rem",
-                zIndex: "999",
-            }}>
-            <div
-                style={{
-                    width: mobile ? "60%" : "20rem",
-                    marginLeft: "auto",
-                    marginRight: "10%",
-                    background: "#0067E0",
-                    padding: "1rem",
-                    borderRadius: "10px",
-                    boxShadow: "0 0 25px rgba(0,0,0,0.25)",
-                }}>
+        <div style={modalShadowStyle}>
+            <div style={settingsModalStyle}>
                 <div
                     style={{
                         width: "100%",
@@ -59,36 +43,15 @@ const Settings = ({ setIsSettings }) => {
                     }}>
                     <IconButton
                         onClick={() => setIsSettings(prevState => !prevState)}
-                        style={{
-                            background: "white",
-                            boxShadow: "0 0 15px rgba(0,0,0,0.25)",
-                            width: "1rem",
-                            height: "1rem",
-                        }}>
+                        style={settingsModalCloseStyle}>
                         <CloseIcon style={{ color: "#0067E0", fontSize: "0.7rem" }} />
                     </IconButton>
                 </div>
                 <ButtonGroup orientation="vertical" variant="contained" fullWidth={true}>
-                    <Button
-                        onClick={backHandler}
-                        style={{
-                            background: "white",
-                            color: "#0067E0",
-                            textTransform: "initial",
-                            fontFamily: '"Lobster Two", cursive',
-                            fontSize: "1rem",
-                        }}>
+                    <Button onClick={backHandler} style={{ ...buttonStyle, fontSize: "1rem" }}>
                         Back
                     </Button>
-                    <Button
-                        onClick={deleteHandler}
-                        style={{
-                            background: "white",
-                            color: "#0067E0",
-                            textTransform: "initial",
-                            fontFamily: '"Lobster Two", cursive',
-                            fontSize: "1rem",
-                        }}>
+                    <Button onClick={deleteHandler} style={{ ...buttonStyle, fontSize: "1rem" }}>
                         Delete Category
                     </Button>
                 </ButtonGroup>
