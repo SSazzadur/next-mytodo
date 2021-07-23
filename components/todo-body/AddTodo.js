@@ -86,6 +86,7 @@ const AddCategory = ({ setIsAddTodo }) => {
                         value={todoBody}
                         onChange={e => setTodoBody(e.target.value)}
                         id="add-todos-cat"
+                        multiline
                         autoComplete="off"
                         style={modalTextFieldStyle}
                     />
