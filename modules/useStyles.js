@@ -1,7 +1,7 @@
 import { useMediaQuery } from "@material-ui/core";
 
 export default function useStyles() {
-    const mobile = useMediaQuery("(max-width:600px)");
+    const mobile = useMediaQuery("(max-width:650px)");
 
     const topBarConatinerStyle = {
         width: "100%",
