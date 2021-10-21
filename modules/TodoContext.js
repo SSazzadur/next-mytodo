@@ -34,8 +34,8 @@ export const TodoProvider = ({ children }) => {
     const [todoBody, setTodoBody] = useState("");
 
     useEffect(() => {
-        if (window.localStorage.getItem("my-todos") !== null) {
-            setTodos(JSON.parse(window.localStorage.getItem("my-todos")));
+        if (localStorage.getItem("my-todos") !== null) {
+            setTodos(JSON.parse(localStorage.getItem("my-todos")));
         }
     }, []);
     return (
